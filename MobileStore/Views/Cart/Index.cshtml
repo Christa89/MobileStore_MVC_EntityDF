@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DataAccess.tblCart>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>My Cart </h2>
+
+
+<table class="table table-bordered  table-striped table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PurcharseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblCustomer.CustName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblModel.ModelName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.tblCustomer.Addess)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblCustomer.PhoneNo)
+        </th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurcharseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblCustomer.CustName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblModel.ModelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblCustomer.Addess)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblCustomer.PhoneNo)
+        </td>
+       
+    </tr>
+}
+
+</table>

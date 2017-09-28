@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e3f6dad8ac974e8d920cf1ba4ca6375b" Name="Diagram1">
+        <EntityTypeShape EntityType="mobileStoreModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileStoreModel.tblBrand" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileStoreModel.tblCart" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileStoreModel.tblCustomer" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileStoreModel.tblDiscount" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileStoreModel.tblModel" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileStoreModel.tblStock" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileStoreModel.tblType" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="mobileStoreModel.FK_mobModel_mobBrand" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileStoreModel.FK_tblCart_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileStoreModel.FK_tblCart_tblModel" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileStoreModel.FK_tblModel_tblDiscount" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileStoreModel.FK_tblModel_tblStock" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileStoreModel.FK_tblModel_tblType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

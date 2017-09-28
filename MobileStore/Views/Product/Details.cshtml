@@ -1,0 +1,107 @@
+﻿@model DataAccess.tblModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>tblModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelImagePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAvailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsAvailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblBrand.BrandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblBrand.BrandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblDiscount.DiscountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblDiscount.DiscountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblStock.StockId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblStock.StockId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblType.TypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblType.TypeName)
+        </dd>
+
+    </dl>
+</div>
+
+@using (Html.BeginForm("AddCart", "cart", FormMethod.Post, null))
+{
+    
+    @Html.HiddenFor(Model => Model.ModelId)
+    <div class="form-group">
+        <label for="exampleInputPassword1">Colour</label>
+
+        @Html.TextBoxFor(Model => Model.ModelName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Purcharse Date</label>
+
+        @Html.TextBoxFor(Model => Model.PurcharseDate, new { @class = "form-control", @type = "Date" })
+    </div>
+
+
+    @*<div class="form-group">
+        <label for="exampleInputPassword1">Purcharse Date</label>
+        @Html.TextBoxFor(Model => Model.Price, new { @class = "form-control" })
+    </div>*@
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add To Cart" class="btn btn-default" />
+        </div>
+    </div>
+}

@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mobileStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblBrand">
+    <Key>
+      <PropertyRef Name="BrandId" />
+    </Key>
+    <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandName" Type="nvarchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblCart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CusId" Type="int" />
+    <Property Name="ModelId" Type="int" />
+    <Property Name="PurcharseDate" Type="date" />
+  </EntityType>
+  <EntityType Name="tblCustomer">
+    <Key>
+      <PropertyRef Name="CusId" />
+    </Key>
+    <Property Name="CusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustName" Type="varchar" MaxLength="50" />
+    <Property Name="Addess" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
+    <Property Name="EmailId" Type="varchar" MaxLength="50" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+    <Property Name="Password" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="tblDiscount">
+    <Key>
+      <PropertyRef Name="DiscountId" />
+    </Key>
+    <Property Name="DiscountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisCountPersantage" Type="real" />
+    <Property Name="DiscountName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblModel">
+    <Key>
+      <PropertyRef Name="ModelId" />
+    </Key>
+    <Property Name="ModelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModelName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModelImagePath" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsAvailable" Type="bit" />
+    <Property Name="BrandId" Type="int" />
+    <Property Name="TypeId" Type="int" />
+    <Property Name="Price" Type="real" />
+    <Property Name="DiscountId" Type="int" />
+    <Property Name="StockId" Type="int" />
+  </EntityType>
+  <EntityType Name="tblStock">
+    <Key>
+      <PropertyRef Name="StockId" />
+    </Key>
+    <Property Name="StockId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModelId" Type="int" />
+    <Property Name="IsAvailable" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblType">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_mobModel_mobBrand">
+    <End Role="tblBrand" Type="Self.tblBrand" Multiplicity="0..1" />
+    <End Role="tblModel" Type="Self.tblModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBrand">
+        <PropertyRef Name="BrandId" />
+      </Principal>
+      <Dependent Role="tblModel">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCart_tblCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="0..1" />
+    <End Role="tblCart" Type="Self.tblCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="CusId" />
+      </Principal>
+      <Dependent Role="tblCart">
+        <PropertyRef Name="CusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCart_tblModel">
+    <End Role="tblModel" Type="Self.tblModel" Multiplicity="0..1" />
+    <End Role="tblCart" Type="Self.tblCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblModel">
+        <PropertyRef Name="ModelId" />
+      </Principal>
+      <Dependent Role="tblCart">
+        <PropertyRef Name="ModelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblModel_tblDiscount">
+    <End Role="tblDiscount" Type="Self.tblDiscount" Multiplicity="0..1" />
+    <End Role="tblModel" Type="Self.tblModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDiscount">
+        <PropertyRef Name="DiscountId" />
+      </Principal>
+      <Dependent Role="tblModel">
+        <PropertyRef Name="DiscountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblModel_tblStock">
+    <End Role="tblStock" Type="Self.tblStock" Multiplicity="0..1" />
+    <End Role="tblModel" Type="Self.tblModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStock">
+        <PropertyRef Name="StockId" />
+      </Principal>
+      <Dependent Role="tblModel">
+        <PropertyRef Name="StockId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblModel_tblType">
+    <End Role="tblType" Type="Self.tblType" Multiplicity="0..1" />
+    <End Role="tblModel" Type="Self.tblModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblType">
+        <PropertyRef Name="TypeId" />
+      </Principal>
+      <Dependent Role="tblModel">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="mobileStoreModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBrand" EntityType="Self.tblBrand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCart" EntityType="Self.tblCart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDiscount" EntityType="Self.tblDiscount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblModel" EntityType="Self.tblModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStock" EntityType="Self.tblStock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblType" EntityType="Self.tblType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_mobModel_mobBrand" Association="Self.FK_mobModel_mobBrand">
+      <End Role="tblBrand" EntitySet="tblBrand" />
+      <End Role="tblModel" EntitySet="tblModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCart_tblCustomer" Association="Self.FK_tblCart_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomer" />
+      <End Role="tblCart" EntitySet="tblCart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCart_tblModel" Association="Self.FK_tblCart_tblModel">
+      <End Role="tblModel" EntitySet="tblModel" />
+      <End Role="tblCart" EntitySet="tblCart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblModel_tblDiscount" Association="Self.FK_tblModel_tblDiscount">
+      <End Role="tblDiscount" EntitySet="tblDiscount" />
+      <End Role="tblModel" EntitySet="tblModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblModel_tblStock" Association="Self.FK_tblModel_tblStock">
+      <End Role="tblStock" EntitySet="tblStock" />
+      <End Role="tblModel" EntitySet="tblModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblModel_tblType" Association="Self.FK_tblModel_tblType">
+      <End Role="tblType" EntitySet="tblType" />
+      <End Role="tblModel" EntitySet="tblModel" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,144 @@
+﻿@model IEnumerable<DataAccess.tblModel>
+
+@{
+    ViewBag.Title = "Index";
+    var message = TempData["AlertMessage"] ?? string.Empty;
+}
+
+<script type="text/javascript">
+    var message = '@message';
+    if(message)
+        alert(message);
+
+
+    function askToLogin()
+    {
+        alert("Login To Action");
+        window.location.href = '/Account/Login/'
+        return false;
+    }
+</script>
+
+<h2>Mobile Lists</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table table-responsive table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ModelImagePath)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.IsAvailable)
+        </th>*@
+        <th>
+           
+                @Html.DisplayNameFor(model => model.Price)
+           
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblBrand.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblDiscount.DiscountName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.tblStock.StockId)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.tblType.TypeName)
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    
+    if (item.IsAvailable == true)
+    { 
+    <tr  class="success">
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ModelImagePath)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IsAvailable)
+        </td>*@
+        <td>
+            <span class="glyphicon glyphicon-euro">
+               
+                @Html.DisplayFor(modelItem => item.Price)
+            </span>
+</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblBrand.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblDiscount.DiscountName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.tblStock.StockId)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.tblType.TypeName)
+        </td>
+        <td>
+            @if (ViewBag.Auth)
+            {
+                @Html.ActionLink("Purcharse", "Details", "product", new { id = item.ModelId }, new { @class = "Form-control" })
+            }
+            else
+            {
+                 @Html.ActionLink("Purcharse", "Details", "product", new { id = item.ModelId }, new { @class = "Form-control", onclick = "return askToLogin();" })
+            } 
+            
+        </td>
+    </tr>
+    }
+    
+else
+    {
+         <tr  class="danger">
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ModelImagePath)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IsAvailable)
+        </td>*@
+        <td>
+            <span class="glyphicon glyphicon-euro">
+               
+                @Html.DisplayFor(modelItem => item.Price)
+            </span>
+</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblBrand.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblDiscount.DiscountName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.tblStock.StockId)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.tblType.TypeName)
+        </td>
+        <td>
+               @Html.Label("Not Available", new { @class= "form-label" })
+                    
+        </td>
+    </tr>
+    }
+}
+    
+</table>

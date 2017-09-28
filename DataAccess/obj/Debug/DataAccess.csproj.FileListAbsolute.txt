@@ -1,0 +1,10 @@
+c:\users\christopher\documents\visual studio 2013\Projects\MobileStore\DataAccess\bin\Debug\DataAccess.dll.config
+c:\users\christopher\documents\visual studio 2013\Projects\MobileStore\DataAccess\bin\Debug\DataAccess.dll
+c:\users\christopher\documents\visual studio 2013\Projects\MobileStore\DataAccess\bin\Debug\DataAccess.pdb
+c:\users\christopher\documents\visual studio 2013\Projects\MobileStore\DataAccess\bin\Debug\EntityFramework.dll
+c:\users\christopher\documents\visual studio 2013\Projects\MobileStore\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\christopher\documents\visual studio 2013\Projects\MobileStore\DataAccess\bin\Debug\EntityFramework.xml
+c:\users\christopher\documents\visual studio 2013\Projects\MobileStore\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\christopher\documents\visual studio 2013\Projects\MobileStore\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
+c:\users\christopher\documents\visual studio 2013\Projects\MobileStore\DataAccess\obj\Debug\DataAccess.dll
+c:\users\christopher\documents\visual studio 2013\Projects\MobileStore\DataAccess\obj\Debug\DataAccess.pdb
